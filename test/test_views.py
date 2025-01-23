@@ -11,13 +11,24 @@ class ViewsTestCase(TestCase):
         self.request = self.factory.get('/')
         self.request.session = {'user_name': 'TestUser'}
 
-    def test_index_authenticated(self):
+
+    @patch('proyectoEntrega.views.render')
+    def test_index_authenticated(self, mock_render):
+        request = self.factory.get('/')
+        request.session = {'user_name': 'TestUser'}  # Simular sesión de usuario
+        response = index(request)
+        mock_render.assert_called_once_with(request, 'index.html', {'user_name': 'TestUser'})
+
+    """def test_index_authenticated(self):
         response = index(self.request, user_name='TestUser')
         self.assertEqual(response.status_code, 200)
-        self.assertIn(b'TestUser', response.content)
+        self.assertIn(b'TestUser', response.content)"""
 
     @patch('proyectoEntrega.views.requests.get')
     def test_top_smartwatches_success(self, mock_get):
+        request = self.factory.get('/')
+        request.session = {'user_name': 'TestUser'}  # Simular sesión de usuario
+
         mock_response = MagicMock()
         mock_response.status_code = 200
         mock_response.json.return_value = {
@@ -32,16 +43,19 @@ class ViewsTestCase(TestCase):
         }
         mock_get.return_value = mock_response
 
-        response = top_smartwatches(self.request, user_name='TestUser')
+        response = top_smartwatches(self.request)
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'Watch 1', response.content)
         self.assertIn(b'TestUser', response.content)
 
     @patch('proyectoEntrega.views.requests.get')
     def test_top_smartwatches_error(self, mock_get):
+        request = self.factory.get('/')
+        request.session = {'user_name': 'TestUser'}  # Simular sesión de usuario
+
         mock_get.side_effect = requests.exceptions.RequestException("Connection error")
 
-        response = top_smartwatches(self.request, user_name='TestUser')
+        response = top_smartwatches(self.request)
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'No se pudo realizar la conexi\xc3\xb3n', response.content)
 

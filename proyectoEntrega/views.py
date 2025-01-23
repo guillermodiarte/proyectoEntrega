@@ -17,7 +17,7 @@ def user_authenticated(view_func):
 def index(request):
     return render(request, 'index.html', {'user_name': request.user_name})
 
-# Listado de relojes inteligentes más populares
+# Listado de relojes inteligentes más costosos
 @user_authenticated
 def top_smartwatches(request):
     url = f"{st.ML_BASE_URL}/sites/MLA/search?category={st.CATEGORY_ID}&sort={st.SORT}&limit={st.LIMIT}"
