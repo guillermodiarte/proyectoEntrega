@@ -1,0 +1,14 @@
+{% load static %}
+<nav>
+    <img src="{% static './img/logo.png' %}" width="64"/>
+    <ul>
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'top_smartwatches' %}">Top 20</a></li>
+        <li><a href="{% url 'seller_statistics' %}">Vendedores</a></li>
+        {% if user_name == "Invitado" or user_name == None %}
+            <li><a href="{% url 'login' %}">Login</a></li>
+        {% else %}
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        {% endif %}
+    </ul>
+</nav>

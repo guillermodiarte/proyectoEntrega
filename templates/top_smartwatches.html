@@ -1,0 +1,26 @@
+{% extends './layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+<header>
+    <h1>Bienvenido, {{ user_name }}</h1>
+</header>
+<h1>TOP Smartwatches: Los 20 mas caros</h1>
+
+<div class="item-container">
+    {% if error %}
+        <img src="{% static './img/errordeconexion.jpg' %}" alt="Error de Conexion"> 
+    {% else %}
+        {% for item in items %}
+        <div class="item">
+            <img src="{{ item.thumbnail }}" alt="{{ item.title }}">
+            <div class="item-content">
+                <p><strong>Título:</strong> {{ item.title }}</p>
+                <p><strong>Precio:</strong> ${{ item.price }}</p>
+                <p><a href="{{ item.permalink }}" target="_blank">Ver en Mercado Libre</a></p>
+            </div>
+        </div>
+        {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends './layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+    <header>
+        <h1>Bienvenido, {{ user_name }}</h1>
+    </header>
+    <div class="container">
+        <div class="section">
+            <a href="{% url 'top_smartwatches' %}" class="link-section">
+            <img src="{% static './img/topsmartwatch.jpg' %}" alt="Smartwatch caros">
+            <h2>Los 20 Smartwatch más caros de MercadoLibre</h2>
+            <p>Descubre los modelos más exclusivos y costosos disponibles en el mercado.</p>
+        </a>
+        </div>
+        <div class="section">
+            <a href="{% url 'seller_statistics' %}" class="link-section">
+            <img src="{% static './img/vendedores.jpg' %}" alt="Vendedores de Smartwatch">
+            <h2>Vendedores de Smartwatch de MercadoLibre</h2>
+            <p>Explora las estadísticas y detalles de los mejores vendedores en esta categoría.</p>
+        </div>
+    </div>
+{% endblock %}

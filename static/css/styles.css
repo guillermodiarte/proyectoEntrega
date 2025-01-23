@@ -1,0 +1,199 @@
+:root {
+    --color-primary: #ffe600;
+    --color-secondary: #f0d02d ;
+    --color-text: #707789;
+    --color-background: #dedede;
+    --font-titte: Hadenut;
+    --font-text: CoolveticaRg;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: var(--font-text);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--color-text);
+}
+
+/* CSS perteneciente al Menú */
+
+nav {
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    background-color: var(--color-primary);
+}
+
+nav img {
+    margin: 25px;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+nav ul li {
+    padding: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--color-text);
+    font-size: 30px;
+    font-weight: 700;
+    font-family: var(--font-titte);
+}
+
+nav ul li a:hover {
+    color: white;
+}
+
+main {
+    background-color: var(--color-background);
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 50px;
+
+    min-height: 75vh;
+}
+
+/* CSS perteneciente al Footer */
+
+footer {
+    width: 100vw;
+    min-height: 150px;
+    background-color: var(--color-text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* CSS perteneciente a la pagina de Inicio */
+
+.container {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    height: 60vh;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 45%;
+    text-align: center;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.section img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.section h2 {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.section p {
+    font-size: 1rem;
+    color: #666;
+}
+
+.link-section {
+    text-decoration: none;
+    color: inherit;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 20px 0;
+    }
+
+    .section {
+        width: 90%;
+        margin-bottom: 20px;
+    }
+}
+
+/* CSS perteneciente a top_smartwatches.html */
+
+.item-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding-top: 20px;
+}
+.item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 45%; /* Ajustable para la responsividad */
+    max-width: 400px;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.seller:hover {
+    background-color: var(--color-secondary);
+}
+.item img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 15px;
+}
+.item-content {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.item-content a {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+}
+.item-content a:hover {
+    text-decoration: underline;
+}
+
+/* CSS perteneciente a seller_statistics.html */
+
+.perfil{
+    text-decoration: none;
+    color: black;
+}
+
+@font-face {
+    font-family: Hadenut;
+    src: url('../fonts/Hadenut.ttf');
+}
+
+@font-face {
+    font-family: CoolveticaRg;
+    src: url('../fonts/CoolveticaRg.otf');
+}

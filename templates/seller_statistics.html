@@ -1,0 +1,27 @@
+{% extends './layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Vendedores de Smartwatch de MercadoLibre</h1>
+
+<div class="item-container">
+    {% if error %}
+        <img src="{% static './img/errordeconexion.jpg' %}" alt="Error de Conexion"> 
+    {% else %}
+    {% for seller in sellers %}
+        <div class="item seller">
+            <a href="http://perfil.mercadolibre.com.ar/{{ seller.seller_nickname }}" target="_blank" class="perfil">
+                <div class="item-content">
+                    <p>ID de vendedor: {{ seller.seller_id }}</p>
+                    <p>Nickname: {{ seller.seller_nickname }}</p>
+                    <p>Cantidad de Publicaciones: {{ seller.total_listings }}</p>
+                    <p>Cantidad de Publicaciones Gold Special: {{ seller.gold_special }}</p>
+                    <p>Cantidad de Publicaciones Gold Pro: {{ seller.gold_pro }}</p>
+                    <p>Precio Promedio de las Publicaciones: ${{ seller.average_price|floatformat:2 }}</p>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}
