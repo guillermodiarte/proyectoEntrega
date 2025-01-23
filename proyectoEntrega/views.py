@@ -5,6 +5,7 @@ import requests
 import asyncio
 import aiohttp
 
+
 # Decorador para verificar si el usuario está autenticado
 def user_authenticated(view_func):
     def wrapper(request, *args, **kwargs):
@@ -12,10 +13,12 @@ def user_authenticated(view_func):
         return view_func(request, *args, **kwargs)
     return wrapper
 
+
 # Página principal
 @user_authenticated
 def index(request):
     return render(request, 'index.html', {'user_name': request.user_name})
+
 
 # Listado de relojes inteligentes más costosos
 @user_authenticated
@@ -43,6 +46,7 @@ def top_smartwatches(request):
         context = {'error': f"Error inesperado: {str(e)}"}
     return render(request, 'top_smartwatches.html', context)
 
+
 # Función asíncrona para obtener datos
 async def fetch_data(url, session):
     try:
@@ -52,6 +56,7 @@ async def fetch_data(url, session):
             return await response.json()
     except Exception as e:
         return {'error': f"Error al obtener datos: {str(e)}"}
+
 
 # Estadísticas de vendedores
 async def seller_statistics(request):
@@ -105,6 +110,7 @@ async def seller_statistics(request):
     except Exception as e:
         return render(request, 'seller_statistics.html', {'error': f"Error inesperado: {str(e)}"})
 
+
 # Iniciar sesión
 def login(request):
     try:
@@ -116,6 +122,7 @@ def login(request):
         return redirect(auth_url)
     except Exception as e:
         return HttpResponse(f"Error al intentar redirigir a la autenticación: {str(e)}", status=500)
+
 
 # Callback de autenticación
 def callback(request):
@@ -154,6 +161,7 @@ def callback(request):
         return HttpResponse(f"Error al procesar los datos: {str(e)}", status=500)
     except Exception as e:
         return HttpResponse(f"Error inesperado: {str(e)}", status=500)
+
 
 # Cerrar sesión
 def logout(request):

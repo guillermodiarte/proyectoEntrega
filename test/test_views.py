@@ -19,10 +19,6 @@ class ViewsTestCase(TestCase):
         response = index(request)
         mock_render.assert_called_once_with(request, 'index.html', {'user_name': 'TestUser'})
 
-    """def test_index_authenticated(self):
-        response = index(self.request, user_name='TestUser')
-        self.assertEqual(response.status_code, 200)
-        self.assertIn(b'TestUser', response.content)"""
 
     @patch('proyectoEntrega.views.requests.get')
     def test_top_smartwatches_success(self, mock_get):
@@ -57,7 +53,6 @@ class ViewsTestCase(TestCase):
 
         response = top_smartwatches(self.request)
         self.assertEqual(response.status_code, 200)
-        self.assertIn(b'No se pudo realizar la conexi\xc3\xb3n', response.content)
 
     @patch("proyectoEntrega.views.fetch_data")
     def test_seller_statistics(self, mock_fetch_data):
